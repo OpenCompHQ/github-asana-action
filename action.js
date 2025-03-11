@@ -56,13 +56,13 @@ async function buildClient(asanaPAT) {
   }).useAccessToken(asanaPAT).authorize();
 }
 
-async function action() {  
-  const 
+async function action() {
+  const
     ASANA_PAT = core.getInput('asana-pat', {required: true}),
     ACTION = core.getInput('action', {required: true}),
     TRIGGER_PHRASE = core.getInput('trigger-phrase') || '',
     PULL_REQUEST = github.context.payload.pull_request,
-    REGEX_STRING = `${TRIGGER_PHRASE}(?:\s*)https:\\/\\/app.asana.com\\/(\\d+)\\/(?<project>\\d+)\\/(?<task>\\d+)`,
+    REGEX_STRING = `${TRIGGER_PHRASE}(?:\s*)https:\\/\\/app.asana.com\\/(\\d+)\\/(\\d+)\\/project\\/(?<project>\\d+)\\/task\\/(?<task>\\d+)`,
     REGEX = new RegExp(REGEX_STRING,'g')
   ;
 
